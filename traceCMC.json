@@ -1,0 +1,63 @@
+{
+    "Utilisateur": {
+       "Login": "Thierry09",
+       "Activites": {
+          "Connexions": {
+             "Connexion": {
+                "Date": [],
+                "Heure": [],
+                "Duree": []
+             }
+          },
+          "Messages_Lu": {
+             "Message_Lu": {
+                "ID_Message": [],
+                "Date": [],
+                "Heure": []
+             }
+          },
+          "Messages_Postes": {
+             "Message_Poste": {
+                "Id_Message": "1137",
+                "Id_Forum": "7",
+                "Date": [],
+                "Heure": []
+             }
+          },
+          "Visites_Hyperlien": {
+             "Visite_Hyperlien": {
+                "ID_Message": [],
+                "Date": [],
+                "Heure": []
+             }
+          },
+          "Reponses_Message": {
+             "Reponse_Message": {
+                "ID_Parent": [],
+                "ID_Message": [],
+                "Date": [],
+                "Heure": []
+             }
+          },
+          "Documents_Deposes": {
+             "Document_Depose": {
+                "ID_Fichier": [],
+                "Date": [],
+                "Heure": [],
+                "ID_Message": [],
+                "ID_Forum": [],
+                "Nb_Telechargements": []
+             }
+          },
+          "Documents_Telecharges": {
+             "Document_Telecharge": {
+                "ID_Fichier": [],
+                "ID_Forum": [],
+                "ID_Message": [],
+                "Date": [],
+                "Heure": []
+             }
+          }
+       }
+    }
+ }
