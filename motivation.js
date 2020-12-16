@@ -1,6 +1,217 @@
-var colors = Highcharts.getOptions().colors;
-Highcharts.chart('container', {
+const data = {
+    Utilisateurs: [
+      {
+        Login: 'Thierry09',
+        Activites: {
+          Connexions: [
+            {
+              Date: '01/25/52',
+              Heure: '12h32',
+              Duree: 120
+            },
+            {
+              Date: '01/25/52',
+              Heure: '12h32',
+              Duree: 212
+            }
+          ],
+          Messages_Lu: [
+            {
+              ID_Message: '01/25/52',
+              Date: '12h32',
+              Heure: 56
+            },
+            {
+              ID_Message: '01/25/52',
+              Date: '12h32',
+              Heure: 56
+            }
+          ],
+          Messages_Postes: [
+            {
+              ID_Message: 4,
+              Id_Forum: 2,
+              Date: '12h32',
+              Heure: '125'
+            },
+            {
+              ID_Message: 4,
+              Id_Forum: 2,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Visites_Hyperlien: [
+            {
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            },
+            {
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Reponses_Message: [
+            {
+              ID_Parent: 1,
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            },
+            {
+              ID_Parent: 1,
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Documents_Deposes: [
+            {
+              ID_Fichier: 1,
+              Date: '12/12/2512',
+              Heure: '12h32',
+              ID_Message: 37,
+              ID_Forum: 58,
+              Nb_Telechargements: 3
+            },
+            {
+              ID_Fichier: 1,
+              Date: '12/12/2512',
+              Heure: '12h32',
+              ID_Message: 37,
+              ID_Forum: 58,
+              Nb_Telechargements: 3
+            }
+          ],
+          Documents_Telecharges: [
+            {
+              ID_Fichier: 1,
+              ID_Forum: 3,
+              ID_Message: 4,
+              Date: '12/12/2021',
+              Heure: '12h31'
+            },
+            {
+              ID_Fichier: 1,
+              ID_Forum: 3,
+              ID_Message: 4,
+              Date: '12/12/2021',
+              Heure: '12h31'
+            }
+          ]
+        }
+      },
+      {
+        Login: 'Thierry0wxw9',
+        Activites: {
+          Connexions: [
+            {
+              Date: '01/25/52',
+              Heure: '12h32',
+              Duree: 120
+            },
+            {
+              Date: '01/25/52',
+              Heure: '12h32',
+              Duree: 212
+            }
+          ],
+          Messages_Lu: [
+            {
+              ID_Message: '01/25/52',
+              Date: '12h32',
+              Heure: 56
+            },
+            {
+              ID_Message: '01/25/52',
+              Date: '12h32',
+              Heure: 56
+            }
+          ],
+          Messages_Postes: [
+            {
+              ID_Message: 4,
+              Id_Forum: 2,
+              Date: '12h32',
+              Heure: '125'
+            },
+            {
+              ID_Message: 4,
+              Id_Forum: 2,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Visites_Hyperlien: [
+            {
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            },
+            {
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Reponses_Message: [
+            {
+              ID_Parent: 1,
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            },
+            {
+              ID_Parent: 1,
+              ID_Message: 12,
+              Date: '01/25/52',
+              Heure: '12h32'
+            }
+          ],
+          Documents_Deposes: [
+            {
+              ID_Fichier: 1,
+              Date: '12/12/2512',
+              Heure: '12h32',
+              ID_Message: 37,
+              ID_Forum: 58,
+              Nb_Telechargements: 3
+            },
+            {
+              ID_Fichier: 1,
+              Date: '12/12/2512',
+              Heure: '12h32',
+              ID_Message: 37,
+              ID_Forum: 58,
+              Nb_Telechargements: 3
+            }
+          ],
+          Documents_Telecharges: [
+            {
+              ID_Fichier: 1,
+              ID_Forum: 3,
+              ID_Message: 4,
+              Date: '12/12/2021',
+              Heure: '12h31'
+            },
+            {
+              ID_Fichier: 1,
+              ID_Forum: 3,
+              ID_Message: 4,
+              Date: '12/12/2021',
+              Heure: '12h31'
+            }
+          ]
+        }
+      }
+    ]
+  }
 
+var colors = Highcharts.getOptions().colors;
+
+let chart = Highcharts.chart('container', {
     chart: {
         type: 'streamgraph',
         marginBottom: 30,
@@ -34,46 +245,25 @@ Highcharts.chart('container', {
 
     title: {
         floating: true,
-        align: 'left',
-        text: 'Winter Olympic Medal Wins'
+        align: 'center',
+        text: 'Motivation Trace CMC'
     },
-    subtitle: {
-        floating: true,
-        align: 'left',
-        y: 30,
-        text: 'Source: <a href="https://www.sports-reference.com/olympics/winter/1924/">sports-reference.com</a>'
-    },
+
 
     xAxis: {
         maxPadding: 0,
         type: 'category',
         crosshair: true,
         categories: [
-            '',
-            '1924 Chamonix',
-            '1928 St. Moritz',
-            '1932 Lake Placid',
-            '1936 Garmisch-Partenkirchen',
-            '1940 <i>Cancelled (Sapporo)</i>',
-            '1944 <i>Cancelled (Cortina d\'Ampezzo)</i>',
-            '1948 St. Moritz',
-            '1952 Oslo',
-            '1956 Cortina d\'Ampezzo',
-            '1960 Squaw Valley',
-            '1964 Innsbruck',
-            '1968 Grenoble',
-            '1972 Sapporo',
-            '1976 Innsbruck',
-            '1980 Lake Placid',
-            '1984 Sarajevo',
-            '1988 Calgary',
-            '1992 Albertville',
-            '1994 Lillehammer',
-            '1998 Nagano',
-            '2002 Salt Lake City',
-            '2006 Turin',
-            '2010 Vancouver',
-            '2014 Sochi'
+            't',
+            '01/02/2009 - 15/02/2009',
+            '15/02/2009 - 29/02/2009',
+            '01/03/2009 - 15/03/2009',
+            '15/03/2009 - 31/03/2009',
+            '01/04/2009 - 15/04/2009',
+            '15/04/2009 - 31/04/2009',
+            '01/05/2009 - 15/05/2009',
+            '15/05/2009 - 31/05/2009',
         ],
         labels: {
             align: 'left',
@@ -133,224 +323,24 @@ Highcharts.chart('container', {
 
     // Data parsed with olympic-medals.node.js
     series: [{
-        name: "Finland",
+        name: "Maxime Bizeray",
         data: [
-            0, 11, 4, 3, 6, 0, 0, 6, 9, 7, 8, 10, 5, 5, 7, 9, 13, 7, 7, 6, 12, 7, 9, 5, 5
+            0, 20, 4, 2, 6, 0, 0, 6, 9
         ]
     }, {
-        name: "Austria",
+        name: "Manuel Jehanno",
         data: [
-            0, 3, 4, 2, 4, 0, 0, 8, 8, 11, 6, 12, 11, 5, 6, 7, 1, 10, 21, 9, 17, 17, 23, 16, 17
+            2, 25, 35, 2, 4, 5, 25, 8, 8
         ]
     }, {
-        name: "Sweden",
+        name: "Bastien Bouvet",
         data: [
-            0, 2, 5, 3, 7, 0, 0, 10, 4, 10, 7, 7, 8, 4, 2, 4, 8, 6, 4, 3, 3, 7, 14, 11, 15
+            0, 2, 5, 3, 7, 0, 0, 10, 4
         ]
     }, {
-        name: "Norway",
+        name: "Hugo Valentin",
         data: [
-            0, 17, 15, 10, 15, 0, 0, 10, 16, 4, 6, 15, 14, 12, 7, 10, 9, 5, 20, 26, 25, 25, 19, 23, 26
-        ]
-    }, {
-        name: "U.S.",
-        data: [
-            0, 4, 6, 12, 4, 0, 0, 9, 11, 7, 10, 7, 7, 8, 10, 12, 8, 6, 11, 13, 13, 34, 25, 37, 28
-        ]
-    }, {
-        name: "East Germany",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 14, 19, 23, 24, 25, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "West Germany",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 5, 10, 5, 4, 8, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Germany",
-        data: [
-            0, 0, 1, 2, 6, 0, 0, 0, 7, 2, 8, 9, 0, 0, 0, 0, 0, 0, 26, 24, 29, 36, 29, 30, 19
-        ]
-    }, {
-        name: "Netherlands",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 9, 9, 6, 4, 0, 7, 4, 4, 11, 8, 9, 8, 24
-        ]
-    }, {
-        name: "Italy",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 1, 4, 4, 5, 4, 2, 2, 5, 14, 20, 10, 13, 11, 5, 8
-        ]
-    }, {
-        name: "Canada",
-        data: [
-            0, 1, 1, 7, 1, 0, 0, 3, 2, 3, 4, 3, 3, 1, 3, 2, 4, 5, 7, 13, 15, 17, 24, 26, 25
-        ]
-    }, {
-        name: "Switzerland",
-        data: [
-            0, 3, 1, 1, 3, 0, 0, 10, 2, 6, 2, 0, 6, 10, 5, 5, 5, 15, 3, 9, 7, 11, 14, 9, 11
-        ]
-    }, {
-        name: "Great Britain",
-        data: [
-            0, 4, 1, 0, 3, 0, 0, 2, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 2, 1, 2, 1, 1, 4
-        ]
-    }, {
-        name: "France",
-        data: [
-            0, 3, 1, 1, 1, 0, 0, 5, 1, 0, 3, 7, 9, 3, 1, 1, 3, 2, 9, 5, 8, 11, 9, 11, 15
-        ]
-    }, {
-        name: "Hungary",
-        data: [
-            0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Unified Team",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Soviet Union",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 21, 25, 13, 16, 27, 22, 25, 29, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Russia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 18, 13, 22, 15, 33
-        ]
-    }, {
-        name: "Japan",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 1, 1, 1, 7, 5, 10, 2, 1, 5, 8
-        ]
-    }, {
-        name: "Czechoslovakia",
-        data: [
-            0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 4, 3, 1, 1, 6, 3, 3, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Poland",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 6, 6
-        ]
-    }, {
-        name: "Spain",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "China",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 8, 8, 11, 11, 9
-        ]
-    }, {
-        name: "South Korea",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 6, 4, 11, 14, 8
-        ]
-    }, {
-        name: "Czech Republic",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 4, 6, 8
-        ]
-    }, {
-        name: "Belarus",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1, 1, 3, 6
-        ]
-    }, {
-        name: "Kazakhstan",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 0, 0, 1, 1
-        ]
-    }, {
-        name: "Bulgaria",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 3, 1, 0, 0
-        ]
-    }, {
-        name: "Denmark",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Ukraine",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 2, 0, 2
-        ]
-    }, {
-        name: "Australia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3
-        ]
-    }, {
-        name: "Belgium",
-        data: [
-            0, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Romania",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Liechtenstein",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Yugoslavia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Luxembourg",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "New Zealand",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "North Korea",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0
-        ]
-    }, {
-        name: "Slovakia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 1
-        ]
-    }, {
-        name: "Croatia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 3, 1
-        ]
-    }, {
-        name: "Slovenia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 3, 8
-        ]
-    }, {
-        name: "Latvia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 4
-        ]
-    }, {
-        name: "Estonia",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 0
-        ]
-    }, {
-        name: "Uzbekistan",
-        data: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0
+            1, 17, 15, 10, 15, 0, 0, 10, 25
         ]
     }],
 
@@ -360,3 +350,115 @@ Highcharts.chart('container', {
     }
 
 });
+
+
+chart.series[1].update({
+    data : [1, 17, 15, 10, 15, 0, 0, 10, 25]
+}, false);
+
+console.log(chart.series[1].data)
+chart.redraw(true);
+
+
+
+//entrée -> JSON data
+/*sortie :
+[{
+        name: "Maxime Bizeray",
+        data: [
+            0, 20, 4, 2, 6, 0, 0, 6, 9
+        ]
+    }, {
+        name: "Manuel Jehanno",
+        data: [
+            2, 25, 35, 2, 4, 5, 25, 8, 8
+        ]
+    }, {
+        name: "Bastien Bouvet",
+        data: [
+            0, 2, 5, 3, 7, 0, 0, 10, 4
+        ]
+    }, {
+        name: "Hugo Valentin",
+        data: [
+            1, 17, 15, 10, 15, 0, 0, 10, 25
+        ]
+    }]
+*/
+
+let sortie = [];
+/*sortie[0] = {
+    name : 'test',
+    data : [1,23,4,47,45]
+};
+
+sortie["name"] = "test";*/
+
+//console.log(sortie);
+
+function moulinette_motivation(){
+    let i = 0;
+    let sortie = [];
+    //Pour chaque utilisateur
+    data.Utilisateurs.forEach(utilisateur =>{
+        let nb_Connexion = utilisateur.Activites.Connexions.length;
+        let temps_Connexion = utilisateur.Activites.Connexions[0].Duree;
+        console.log(temps_Connexion)
+
+
+        sortie[i] = {
+            name : utilisateur.Login,
+            data : [
+                1,1,1
+            ]
+        }
+        i++;
+    });
+    console.log(sortie);
+}
+
+
+function comptePeriode(array){
+    let nbPeriode = [];
+    array.forEach(entry => {
+        let date = new Date(entry.Date);
+
+        if(date < new Date("02/01/2009")){
+            nbPeriode[0]++; 
+            console.log("0");
+        }else if (date < new Date("02/15/2009")){
+            console.log("1");
+        }else if (date < new Date("02/29/2009")){
+            console.log("2");
+        }else if (date < new Date("03/15/2009")){
+            console.log("3");
+        }else if (date < new Date("03/31/2009")){
+            console.log("4");
+        }else if (date < new Date("04/15/2009")){
+            console.log("5");
+        }else if (date < new Date("04/31/2009")){
+            console.log("6");
+        }else if (date < new Date("05/15/2009")){
+            console.log("7");
+        }else{
+            console.log("8");
+        }        
+    })
+    console.log()
+}
+
+//moulinette_motivation();
+
+
+comptePeriode([
+    {
+      "ID_Message": "01/25/52",
+      "Date": "01/25/2009",
+      "Heure": 56
+    },
+    {
+      "ID_Message": "01/25/52",
+      "Date": "02/26/2009",
+      "Heure": 56
+    }
+  ]);
