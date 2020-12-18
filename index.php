@@ -9,7 +9,7 @@
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title>Indicateur Motivation</title>
-    
+
 
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
@@ -20,7 +20,7 @@
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
-        <?php 
+        <?php
           $JSONFile = file_get_contents("results.json");
           $JSONObject =json_decode($JSONFile,true);
         ?>
@@ -42,7 +42,7 @@
           <div class="sidebar-sticky">
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Pages</span>
-             
+
             </h6>
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="relation.php">
                   <span data-feather="file"></span>
                   Indicateur 2 : Relation
                 </a>
@@ -62,14 +62,14 @@
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Utilisateurs</span>
-             
+
             </h6>
             <ul class="nav flex-column mb-2">
-              <?php 
+              <?php
                 foreach($JSONObject as $key => $val) {
                   echo '<li class="nav-item">';
                   echo '<a class="nav-link" href="./detail_page?user='.$key.'">'.$key;
-  
+
                   echo '</a></li>';
                 }
               ?>
@@ -80,18 +80,18 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Indicateur 1 : Motivation</h1>
-            
+
           </div>
           <figure class="highcharts-figure">
             <div class="my-4" id="myChart" width="900" height="380"></div>
           <figure class="highcharts-figure">
           <p class="text-center">Graphique montrant la motivation de chaque personne en fonction du temps.</p>
-          
 
-          
-          
-          
-          
+
+
+
+
+
           <h2>Détails  </h2>
           <form action="" method="post">
             <select class="form-control form-control-sm col-sm-2"  name="taskOption" onchange="this.form.submit();">
@@ -105,7 +105,7 @@
               <option value="7" <?php if (isset($_POST['taskOption'])){if ($_POST['taskOption'] == 7) {echo "selected=selected";}} ?>>15/05/2009 - 31/05/2009</option>
             </select>
           </form>
-          
+
           <div class="table-responsive">
             <table class="table table-striped table-sm tableResult">
               <thead>
@@ -126,8 +126,8 @@
                 }else{
                   $selectOption = 0;
                 }
-               
-                foreach($JSONObject as $key => $val) { 
+
+                foreach($JSONObject as $key => $val) {
                   echo '<tr>';
                   echo '<td>';
                   echo '<a class="nav-link" href="./detail_page?user='.$key.'">'.$key;
@@ -140,7 +140,7 @@
                   echo '</tr>';
                 }
               ?>
-            
+
               </tbody>
             </table>
           </div>
