@@ -31,12 +31,12 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
         <?php
-          $JSONFile = file_get_contents("results.json");
+          $JSONFile = file_get_contents("resultRelation.json");
           $JSONObject = json_decode($JSONFile,true);
         ?>
-        <?php echo "var JSONResult = ".(json_encode($JSONFile)).";\n";?>
+        <?php echo "var JSONRelation = ".(json_encode($JSONFile)).";\n";?>
         var user = <?php echo '"'.$user.'"';?>;
-        JSONResult = JSON.parse(JSONResult);
+        JSONRelation = JSON.parse(JSONRelation);
     </script>
   </head>
 
@@ -94,34 +94,17 @@
           <figure class="highcharts-figure ">
             <div id="container"></div>
             <div class="col d-flex justify-content-center">
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-primary active">
-                      <input type="checkbox" name="options" autocomplete="off" checked> Periode 1
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 2
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 3
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 4
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 5
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 6
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 7
-                  </label>
-                  <label class="btn btn-primary">
-                      <input type="checkbox" name="options" autocomplete="off"> Periode 8
-                  </label>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(0)">01/02-15/02</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(1)">15/02-29/02</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(2)">01/03-15/03</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(3)">15/03-31/03</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(4)">01/04-15/04</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(5)">15/04-31/04</button>
+                <button type="button" class="btn btn-primary" onclick="newChartRelation(6)">01/05-15/05</button>
               </div>
             </div>
-            
+
             <div class="col d-flex justify-content-center">
               <div class="card w-100">
                 <div class="card-body">
@@ -157,6 +140,7 @@
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="js/chartRelationship.js"></script>
+    <script src="js/relationAdapter.js"></script>
 
   </body>
 </html>

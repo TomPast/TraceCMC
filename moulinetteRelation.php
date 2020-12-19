@@ -4,9 +4,9 @@
     */
 
     $mysqli= new mysqli("localhost", "root", "", "traceforum");
-    
+
     $JSONResult = array();
-    
+
 
     $queryUsers = "SELECT DISTINCT Utilisateur From transition";
     $resultUsers = $mysqli->query($queryUsers);
@@ -14,7 +14,7 @@
     //Pour chaque utilisateur
     while($r = $resultUsers -> fetch_row()){
         $nom = $r[0];
-    
+
         $ReponsePeriode = array();
         $listUsers = array();
         //Requete pour savoir si l'utilisateur a répondu/cité à un message
@@ -24,7 +24,7 @@
         while($attribut = $attributMessagePeriode1 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode1 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode1 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -45,7 +45,7 @@
         while($attribut = $attributMessagePeriode2 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode2 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode2 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -66,7 +66,7 @@
         while($attribut = $attributMessagePeriode3 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode3 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode3 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -87,7 +87,7 @@
         while($attribut = $attributMessagePeriode4 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode4 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode4 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -108,7 +108,7 @@
         while($attribut = $attributMessagePeriode5 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode5 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode5 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -129,7 +129,7 @@
         while($attribut = $attributMessagePeriode6 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode6 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode6 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -150,7 +150,7 @@
         while($attribut = $attributMessagePeriode7 -> fetch_row()){
             //On récupere l'IDParent du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode7 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode7 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message'  OR `Titre`= 'Repondre a un message')";
@@ -171,14 +171,14 @@
         while($attribut = $attributMessagePeriode1 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode1 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode1 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode1[0] = $mysqli->query($queryUtilisateurCiblePeriode1)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode1[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode1[0]]["lu"]["0"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode1[0]]["lu"]["0"]++;
             }else{
@@ -192,14 +192,14 @@
         while($attribut = $attributMessagePeriode2 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode2 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode2 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode2[0] = $mysqli->query($queryUtilisateurCiblePeriode2)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode2[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode2[0]]["lu"]["1"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode2[0]]["lu"]["1"]++;
             }else{
@@ -213,14 +213,14 @@
         while($attribut = $attributMessagePeriode2 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode3 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode3 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode3[0] = $mysqli->query($queryUtilisateurCiblePeriode3)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode3[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode3[0]]["lu"]["2"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode3[0]]["lu"]["2"]++;
             }else{
@@ -234,14 +234,14 @@
         while($attribut = $attributMessagePeriode4 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode4 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode4 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode4[0] = $mysqli->query($queryUtilisateurCiblePeriode4)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode4[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode4[0]]["lu"]["3"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode4[0]]["lu"]["3"]++;
             }else{
@@ -255,14 +255,14 @@
         while($attribut = $attributMessagePeriode5 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode5 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode5 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode5[0] = $mysqli->query($queryUtilisateurCiblePeriode5)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode5[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode5[0]]["lu"]["4"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode5[0]]["lu"]["4"]++;
             }else{
@@ -276,14 +276,14 @@
         while($attribut = $attributMessagePeriode6 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode6 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode6 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode6[0] = $mysqli->query($queryUtilisateurCiblePeriode6)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode6[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode6[0]]["lu"]["5"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode6[0]]["lu"]["5"]++;
             }else{
@@ -297,14 +297,14 @@
         while($attribut = $attributMessagePeriode7 -> fetch_row()){
             //on récupere l'IDMsg du message pour retrouver son auteur
             $IDParent = substr($attribut[0], sizeof($attribut)-5, 4);
-           
+
             $utilisateurCiblePeriode7 = array();
             //Requete pour savoir à qui l'utilisateur a répondu
             $queryUtilisateurCiblePeriode7 = "SELECT Utilisateur FROM `transition` WHERE `Attribut` like '%IDMsg=".$IDParent."%' AND (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Citer un message' OR `Titre`= 'Repondre a un message')";
             $utilisateurCiblePeriode7[0] = $mysqli->query($queryUtilisateurCiblePeriode7)-> fetch_row()[0];
 
             array_push($listUsers, $utilisateurCiblePeriode7[0]);
-            
+
             if(isset( $JSONResult[$nom][$utilisateurCiblePeriode7[0]]["lu"]["6"])){
                 $JSONResult[$nom][$utilisateurCiblePeriode7[0]]["lu"]["6"]++;
             }else{
@@ -319,17 +319,17 @@
                     $lecture = 0;
                     if(isset( $JSONResult[$key1][$key2]['reponse'][$i])){$reponse = $JSONResult[$key1][$key2]['reponse'][$i];}
                     if(isset( $JSONResult[$key1][$key2]['lu'][$i])){$lecture = $JSONResult[$key1][$key2]['lu'][$i];}
-                    $JSONResult[$key1][$key2]['relation'][$i] = ($reponse * 8 + $lecture)/10;
+                    $JSONResult[$key1][$key2]['relation'][$i] = ($reponse * 8 + $lecture);
                 }
             }
         }
 
-    } 
-    
+    }
+
     //Création d'un fichier JSON avec les résultats
     $fp = fopen('resultRelation.json', 'w');
     fwrite($fp, json_encode($JSONResult));
     fclose($fp);
-    mysqli_close($mysqli);   
+    mysqli_close($mysqli);
 
 ?>
