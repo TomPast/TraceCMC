@@ -121,6 +121,7 @@
                   </label>
               </div>
             </div>
+            
             <div class="col d-flex justify-content-center">
               <div class="card w-100">
                 <div class="card-body">
