@@ -43,7 +43,7 @@
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">Trace CMC</a>
-      <h2 class="text-center text-light">Indicateur 1 : Relations</h2>
+      <h2 class="text-center text-light">Indicateur 2 : Relations</h2>
       <h4 class="text-center text-light">📘</h4>
     </nav>
 
@@ -79,8 +79,7 @@
               <?php
                 foreach($JSONObject as $key => $val) {
                   echo '<li class="nav-item">';
-                  echo '<a class="nav-link" href="./detail_page?user='.$key.'">'.$key;
-
+                  echo '<a class="nav-link">'.$key;
                   echo '</a></li>';
                 }
               ?>
@@ -90,13 +89,49 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Indicateur 2 : Relations de <?php echo $user;?></h1>
+            <h1 class="h2">Indicateur 2 : Roue des relations du forum </h1>
           </div>
-          <figure class="highcharts-figure">
+          <figure class="highcharts-figure ">
             <div id="container"></div>
-            <p class="highcharts-description">
-              BLA bla BLA
-            </p>
+            <div class="col d-flex justify-content-center">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" checked> Periode 1
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 2
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 3
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 4
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 5
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 6
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 7
+                  </label>
+                  <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off"> Periode 8
+                  </label>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <div class="card w-100">
+                <div class="card-body">
+                  <h5 class="card-title">Description</h5>
+                  <p class="highcharts-description card-text">
+                    Ce graphique met en évidence les relations entre les utilisateurs du forum. Passez votre curseur sur un des membres pour voir plus clairement chacune de ses relations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </figure>
         </main>
       </div>
