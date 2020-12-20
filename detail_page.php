@@ -18,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Détail</title>
     
 
 
@@ -31,7 +31,7 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
         <?php 
-          $JSONFile = file_get_contents("results.json");
+          $JSONFile = file_get_contents("resultJSON/resultMotivation.json");
           $JSONObject = json_decode($JSONFile,true);
         ?>
         <?php echo "var JSONResult = ".(json_encode($JSONFile)).";\n";?>

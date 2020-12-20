@@ -1,12 +1,11 @@
 <?php
     /*
-    *  Moulinette PHP qui va ressortir les informations nécéssaires uniquement et les stocker dans un fichier JSON
+    *  Moulinette PHP qui va ressortir les informations nécéssaires pour les relations uniquement et les stocker dans un fichier JSON : resultRelation.json
     */
-
-    $mysqli= new mysqli("localhost", "root", "", "traceforum");
+    include('connect.php');
+    $mysqli= new mysqli($servername, $username, $password, $database);
 
     $JSONResult = array();
-
 
     $queryUsers = "SELECT DISTINCT Utilisateur From transition";
     $resultUsers = $mysqli->query($queryUsers);
@@ -327,9 +326,11 @@
     }
 
     //Création d'un fichier JSON avec les résultats
-    $fp = fopen('resultRelation.json', 'w');
+    $fp = fopen('resultJSON/resultRelation.json', 'w');
     fwrite($fp, json_encode($JSONResult));
     fclose($fp);
     mysqli_close($mysqli);
+
+    echo 'La moulinette a bien été exécutée. Vous retrouverez le résultat dans le fichier resultJSON/resultRelation.json';
 
 ?>

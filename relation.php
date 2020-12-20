@@ -1,16 +1,5 @@
-<?php
-    if(isset($_GET['user'])){
-        $user = $_GET['user'];
-
-    }else{
-        $user = "tdelille";
-
-    }
-?>
-
-
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,9 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
-
-
+    <title>Indicateur Relation</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -31,11 +18,10 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
         <?php
-          $JSONFile = file_get_contents("resultRelation.json");
+          $JSONFile = file_get_contents("resultJSON/resultRelation.json");
           $JSONObject = json_decode($JSONFile,true);
         ?>
         <?php echo "var JSONRelation = ".(json_encode($JSONFile)).";\n";?>
-        var user = <?php echo '"'.$user.'"';?>;
         JSONRelation = JSON.parse(JSONRelation);
     </script>
   </head>
@@ -70,20 +56,6 @@
               </li>
 
             </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Utilisateurs</span>
-
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <?php
-                foreach($JSONObject as $key => $val) {
-                  echo '<li class="nav-item">';
-                  echo '<a class="nav-link">'.$key;
-                  echo '</a></li>';
-                }
-              ?>
-            </ul>
           </div>
         </nav>
 
@@ -93,30 +65,34 @@
           </div>
           <figure class="highcharts-figure ">
             <div id="container"></div>
-            <div class="col d-flex justify-content-center">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(0)">01/02-15/02</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(1)">15/02-29/02</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(2)">01/03-15/03</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(3)">15/03-31/03</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(4)">01/04-15/04</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(5)">15/04-31/04</button>
-                <button type="button" class="btn btn-primary" onclick="newChartRelation(6)">01/05-15/05</button>
-              </div>
-            </div>
-
-            <div class="col d-flex justify-content-center">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h5 class="card-title">Description</h5>
-                  <p class="highcharts-description card-text">
-                    Ce graphique met en évidence les relations entre les utilisateurs du forum. Passez votre curseur sur un des membres pour voir plus clairement chacune de ses relations.
-                  </p>
-                </div>
-              </div>
-            </div>
-
           </figure>
+          <div class="col d-flex justify-content-center my-4">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(0)">01/02-15/02</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(1)">15/02-29/02</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(2)">01/03-15/03</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(3)">15/03-31/03</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(4)">01/04-15/04</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(5)">15/04-31/04</button>
+              <button type="button" class="btn btn-primary" onclick="newChartRelation(6)">01/05-15/05</button>
+            </div>
+          </div>
+
+          <div class="col d-flex justify-content-center">
+            <div class="card w-100">
+              <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="highcharts-description card-text">
+                  Ce graphique met en évidence les relations entre les utilisateurs du forum. Passez votre curseur sur un des membres pour voir plus clairement chacune de ses relations.
+                  Plus le trait est épais, plus les relations entre les deux personnes ont été fortes (beaucoup de messages envoyés ou lus)
+                  <br>
+                  Le calcul du score de relation est le suivant : 8 x (nombre de réponse entre les deux personnes sur la période) + (nombre de lecture entre les deux personnes sur la période)
+                </p>
+              </div>
+            </div>
+          </div>
+
+
         </main>
       </div>
     </div>

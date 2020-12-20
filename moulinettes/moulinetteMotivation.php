@@ -1,9 +1,9 @@
 <?php
     /*
-    *  Moulinette PHP qui va ressortir les informations nécéssaires uniquement et les stocker dans un fichier JSON
+    *  Moulinette PHP qui va ressortir les informations nécéssaires pour la motivation uniquement et les stocker dans un fichier JSON : resultMotivation.json
     */
-
-    $mysqli= new mysqli("localhost", "root", "", "traceforum");
+    include('connect.php');
+    $mysqli= new mysqli($servername, $username, $password, $database);
 
     $JSONResult = array();
 
@@ -13,28 +13,28 @@
         $nom = $r[0];
         //Contient le nombre de message écrit (poste ou réponse) par période de 15 jours
         $MessagePeriode = array();
-        $queryMessagePeriode1 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-02-01' AND '2009-02-15'";
+        $queryMessagePeriode1 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-02-01' AND '2009-02-15'";
         $MessagePeriode[0] = $mysqli->query($queryMessagePeriode1)-> fetch_row()[0];
 
-        $queryMessagePeriode2 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-02-15' AND '2009-02-29'";
+        $queryMessagePeriode2 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-02-15' AND '2009-02-29'";
         $MessagePeriode[1] = $mysqli->query($queryMessagePeriode2)-> fetch_row()[0];
 
-        $queryMessagePeriode3 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-03-01' AND '2009-03-15'";
+        $queryMessagePeriode3 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-03-01' AND '2009-03-15'";
         $MessagePeriode[2] = $mysqli->query($queryMessagePeriode3)-> fetch_row()[0];
 
-        $queryMessagePeriode4 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-03-15' AND '2009-03-31'";
+        $queryMessagePeriode4 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-03-15' AND '2009-03-31'";
         $MessagePeriode[3] = $mysqli->query($queryMessagePeriode4)-> fetch_row()[0];
 
-        $queryMessagePeriode5 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-04-01' AND '2009-04-15'";
+        $queryMessagePeriode5 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-04-01' AND '2009-04-15'";
         $MessagePeriode[4] = $mysqli->query($queryMessagePeriode5)-> fetch_row()[0];
 
-        $queryMessagePeriode6 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-04-15' AND '2009-04-31'";
+        $queryMessagePeriode6 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-04-15' AND '2009-04-31'";
         $MessagePeriode[5] = $mysqli->query($queryMessagePeriode6)-> fetch_row()[0];
 
-        $queryMessagePeriode7 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-05-01' AND '2009-05-15'";
+        $queryMessagePeriode7 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-05-01' AND '2009-05-15'";
         $MessagePeriode[6] = $mysqli->query($queryMessagePeriode7)-> fetch_row()[0];
 
-        $queryMessagePeriode8 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-05-15' AND '2009-05-31'";
+        $queryMessagePeriode8 = "SELECT Count(IDTran) as nb FROM `transition` WHERE (`Titre`= 'Poster un nouveau message' OR `Titre`= 'Repondre a un message' OR `Titre`= 'Citer un message') AND `Utilisateur` ='".$nom."' AND `Date` BETWEEN '2009-05-15' AND '2009-05-31'";
         $MessagePeriode[7] = $mysqli->query($queryMessagePeriode8)-> fetch_row()[0];
 
         //Contient le nombre de message affiché par période de 15 jours
@@ -130,7 +130,7 @@
     }
 
     //Création d'un fichier JSON avec les résultats
-    $fp = fopen('results.json', 'w');
+    $fp = fopen('resultJSON/resultMotivation.json', 'w');
     fwrite($fp, json_encode($JSONResult));
     fclose($fp);
     mysqli_close($mysqli);

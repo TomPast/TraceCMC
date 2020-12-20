@@ -21,7 +21,7 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
         <?php
-          $JSONFile = file_get_contents("results.json");
+          $JSONFile = file_get_contents("resultJSON/resultMotivation.json");
           $JSONObject =json_decode($JSONFile,true);
         ?>
         <?php echo "var JSONResult = ".(json_encode($JSONFile)).";\n";?>
@@ -85,12 +85,23 @@
           <figure class="highcharts-figure">
             <div class="my-4" id="myChart" width="900" height="380"></div>
           <figure class="highcharts-figure">
-          <p class="text-center">Graphique montrant la motivation de chaque personne en fonction du temps.</p>
 
-
-
-
-
+          <div class="col d-flex justify-content-center my-2">
+            <div class="card w-100">
+              <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="highcharts-description card-text">
+                  Graphique montrant la motivation de chaque personne en fonction du temps.
+                  <br>
+                  Chaque couleur représente une personne, plus la zone est épaisse pour une période, plus son score de motivation a été grand.
+                  <br>
+                  Le score de motivation est calculé selon : le nombre de messages postés, cités et répondus sur la période, le nombre de messages lu sur la période, le nombre de documents traités sur la période et le nombre de connexions sur la période.
+                  <br>
+                  Vous pourrez retrouver les détails pour chaque personne dans le tableau ci-dessous, ou bien en cliquant sur le nom d'une personne dans le menu à gauche.
+                </p>
+              </div>
+            </div>
+          </div>
 
           <h2>Détails  </h2>
           <form action="" method="post">
